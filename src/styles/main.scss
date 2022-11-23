@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import "./_variables.scss";
+@import "./_base.scss";
+
+.main{
+    overflow: hidden; /* For animations */
+}
+
+
+/*========== Resuable classes and elements ==========*/
+main{
+    margin: 0;
+    padding-top: 60px;
+}
+
+.container{
+    max-width: 1024px;
+    margin-inline: 1.2rem;
+    padding: .3rem;
+}
+
+.grid{
+    display: grid;
+}
+
+
+/*============= Scroll Up ============*/ 
+.scrollup{
+    position: fixed;
+    right: 1rem;
+    bottom: -30%;
+    background-color: #ddd;
+    box-shadow: 0 4px 12px #445b6f26;
+    display: inline-flex;
+    padding: .35rem;
+    border-radius: .25rem;
+    font-size: 1.5rem;
+    color: $color-title;
+    z-index: 500;
+    transition: bottom .3s, transform .3s;
+    i{
+        color: $color-text;
+    }
+    &:hover{
+        transform: translateY(.25rem);
+    }
+    &.show-scrollup-btn{
+        bottom: 4.5rem;   
+    }
+}
+
+/*========== Brekpoints=========*/
+/* For small devices*/
+@media screen and (min-width: 340px) {
+    .container{
+        margin-inline: 1rem;
+    }
+} 
+
+/* For medium devices*/
+@media screen and (min-width: 576px) {
+    .container{
+        margin-inline: 5rem;
+    }
+}
+
+/*========== Header ==========*/
+@import "./header.scss"; 
+
+

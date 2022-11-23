@@ -1,0 +1,105 @@
+:root {
+}
+
+$theme-map: null;
+/*========== Height ==========*/ 
+$height-header: 3.5rem;
+
+/*========== Theme and Colors ==========*/ 
+/*Background colors for default theme*/ 
+$bg-color-body: #fcfcfd;
+$bg-color-container: #f2f2f3;
+
+/*Text colors for default theme*/ 
+$color-text: #44444b;
+$color-title: #27272a;
+
+/*Background colors for dark theme*/ 
+$dark-theme-bg-color-body: #232020;
+$dark-theme-bg-color-container: #353536;
+
+/*Text colors for dark theme*/
+$dark-theme-color-title: #d1cdd3;
+$dark-theme-color-text: #adabaf;
+
+/*========== Fonts and Typographies ==========*/ 
+$font-family-body: 'Roboto', sans-serif;
+$font-size-h1: 1.5rem;
+$font-size-h2: 1.25rem;
+$font-size-h3: 1rem;
+$font-size-normal: .938rem;
+$font-size-small: .813rem;
+$font-size-tiny: .813rem;
+
+/*========== Font Weights ==========*/ 
+$font-weight-normal: normal;
+$font-weight-bold: bold;
+
+/*=========== Multiple Themes ==========*/
+$themes: (
+  light: (
+    text: $color-text,
+    bg: $bg-color-body,
+    container: $bg-color-container,
+    title: $color-title,
+    icon: #000
+    ),
+  dark: (
+    bg: $dark-theme-bg-color-body,
+    text: $dark-theme-color-text,
+    container: $dark-theme-bg-color-container,
+    title: $dark-theme-color-title,
+    icon: #FFF
+  ),
+);
+
+@mixin themify($themes) {
+    @each $name, $values in $themes {
+      .#{$name}-theme {
+        $theme-map: $values !global;
+        @content;
+      }
+    }
+}
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}
+
+@include themify($themes) {
+    h1, h2, h3, h4, h5, h6 {
+      color: themed("title");
+    }
+    .header, .nav__menu{
+      color: themed("text");
+      background-color: themed("bg");
+    }
+    .container{
+      color: themed("text");
+      background-color: themed("container");
+    }
+    button {
+      background-color: themed("title");
+      color: themed("text");
+    }
+    a {
+      color: themed("title");
+    }
+
+    i{
+        color: themed('icon');
+    }
+
+};
+
+/*=========== Responsive Typographies ==========*/
+@media screen and (min-width: 1024px) {
+    /*============= Fonts and Typographies ============*/ 
+    $font-size-h1: 2.25rem;
+    $font-size-h2: 1.5rem;
+    $font-size-h3: 1.25rem;
+    $font-size-normal: 1rem;
+    $font-size-small: .875rem;
+    $font-size-tiny: .688rem;
+}
+

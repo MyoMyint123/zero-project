@@ -1,0 +1,40 @@
+/*=========== Base ==========*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: $font-family-body;
+    font-size: $font-size-normal;
+    background-color: $bg-color-body;
+    color: $color-text;
+    &.dark-theme{
+        background-color: $dark-theme-bg-color-body;
+        color: $dark-theme-color-text;
+    }
+    transition: background .4s;
+}
+
+
+h1,h2,h3{
+    font-weight: $font-weight-bold;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
